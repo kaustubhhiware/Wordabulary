@@ -10,6 +10,9 @@ from words_with_e import *
 from ends_with import *
 from allstar_words import *
 from prettytable import PrettyTable
+from is_there import *
+from reverse_pairs import *
+from interlocked import *
 
 #####
 #####	install prettytable - pip install prettytable
@@ -29,6 +32,9 @@ if __name__=='__main__':
 		print '6 for checking how many words contain given substring'
 		print '7 for checking how many words end with given substring'
 		print '8 for checking popularity of each char'
+		print '9 for checking if given word makes sense'
+		print '10 for printing all reverse pairs'
+		print '11 for printing interlocked words'
 
 		print 'and 0 to exit\n'
 		option = raw_input("Enter choice : ")
@@ -92,6 +98,19 @@ if __name__=='__main__':
 			print 'Crunching numbers ... displaying count of words containing each letter'
 			allstar_words()
 
+
+		elif option=='9':
+			search_this = raw_input("Enter word to search for , in database : ")
+			is_there(search_this)
+
+		elif option=='10':
+			print 'Displaying all reverse pairs:'
+			char = raw_input("Begin with what letter? (all for complete) : ")
+			reverse_pairs(char)
+
+
+		elif option=='11':
+			interlocked()
 
 #Total number of words = 113809
 		else :
