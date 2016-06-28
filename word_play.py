@@ -8,6 +8,7 @@ from has_only_these import *
 from is_abecedarian import *
 from words_with_e import *
 from allstar_words import *
+from prettytable import PrettyTable
 
 if __name__=='__main__':
 	
