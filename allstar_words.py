@@ -4,6 +4,9 @@ import time
 import string
 from prettytable import PrettyTable
 
+import matplotlib.pyplot as plt
+from plotters import *
+
 def allstar_words():
 	"""
 
@@ -13,6 +16,8 @@ def allstar_words():
 	"""
 	print ''
 	table = PrettyTable(['Char','Freq','%'])
+	frequency=[]
+	letters=[]
 
 	start=ord('a')#convert char to int for iteration
 	for i in range(26):
@@ -20,17 +25,24 @@ def allstar_words():
 
 		#print char 	#At this point , it just prints every alphabet
 		#print 'words containing',char,':',words_with_e(char,False)
+		letters.append(i+1)
+		frequency.append(words_with_e(char,False))
 
-		freq = words_with_e(char,False)
-		percent = 100.0*freq/113809
+		percent = 100.0*frequency[i]/113809
 		percent = int(100*percent)/100.0
-		table.add_row([char , freq , percent])	#Total number of words = 113809
+		table.add_row([char , frequency[i] , percent])	#Total number of words = 113809
 		print 'Counting words with ',char,'...'
-		time.sleep(0.5)
+		time.sleep(0.2)
 
+	print '\nTotal number of words = 113809'
 	print table
+
+	show_freq = raw_input("Enter y to display alphabet wise plot : ")
+	if show_freq=='y':
+		plot_letters(letters,frequency)
+
+
 	#To Do : 
-	#Further => save as freq[e] = 76168
 	
 	#a graph can be added
 	#alphabet wise and freq.wise
