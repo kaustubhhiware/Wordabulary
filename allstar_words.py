@@ -12,10 +12,7 @@ def allstar_words():
 		traverse for all chars
 	"""
 	print ''
-	ch = 'Char'
-	fr = 'Freq'
-	percent='%'
-	table = PrettyTable([ch,fr,percent])
+	table = PrettyTable(['Char','Freq','%'])
 
 	start=ord('a')#convert char to int for iteration
 	for i in range(26):
@@ -28,7 +25,7 @@ def allstar_words():
 		percent = 100.0*freq/113809
 		percent = int(100*percent)/100.0
 		table.add_row([char , freq , percent])	#Total number of words = 113809
-
+		print 'Counting words with ',char,'...'
 		time.sleep(0.5)
 
 	print table

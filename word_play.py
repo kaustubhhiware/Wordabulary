@@ -7,9 +7,13 @@ from has_no_these import *
 from has_only_these import *
 from is_abecedarian import *
 from words_with_e import *
+from ends_with import *
 from allstar_words import *
 from prettytable import PrettyTable
 
+#####
+#####	install prettytable - pip install prettytable
+#####
 if __name__=='__main__':
 	
 	print '\nWelcome to word_play ! Choose your operation '
@@ -22,8 +26,9 @@ if __name__=='__main__':
 		print '3 for checking if a group of letters are only present in a word'
 		print '4 for checking if a group of letters are all exclusively present in a word'
 		print '5 for checking if a word is abecedarian(arranged alphabetically)'
-		print '6 for checking how many words contain given char'
-		print '7 for checking popularity of each char'
+		print '6 for checking how many words contain given substring'
+		print '7 for checking how many words end with given substring'
+		print '8 for checking popularity of each char'
 
 		print 'and 0 to exit\n'
 		option = raw_input("Enter choice : ")
@@ -60,18 +65,30 @@ if __name__=='__main__':
 			print is_abecedarian(word)		
 
 		elif option=='6':
-			char = raw_input("Enter char to check how many words have it : ")
+			substring = raw_input("Enter substring to check how many words have it : ")
 			
-			if len(char)==1:
-				count = words_with_e(char,False)#disable printing words without char
+			is_print = raw_input("Enter 1 to print , else nothing:")
+			print_bool = False
+			if is_print=='1':
+				print_bool=True
 
-				time.sleep(2)#externally called to save time for allstars
-				print '\nwords containing',char,':',count
+			#if len(char)==1:
+			count = words_with_e(substring,print_bool)#disable printing words without char
 
-			else:
-				print 'char needs to be a single letter!'
+			time.sleep(2)#externally called to save time for allstars
+			print '\nwords containing',char,':',count
+
+			#else:
+			#	print 'char needs to be a single letter!'
 
 		elif option=='7':
+			#extend later to rhyming words - sky , bye
+			substring=raw_input("Enter substring to check words which end with it : ")
+			#printing mandatory
+			ends_with(substring)
+
+
+		elif option=='8':
 			print 'Crunching numbers ... displaying count of words containing each letter'
 			allstar_words()
 
