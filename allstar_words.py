@@ -32,8 +32,9 @@ def allstar_words():
 		percent = int(100*percent)/100.0
 		table.add_row([char , frequency[i] , percent])	#Total number of words = 113809
 		print 'Counting words with ',char,'...'
-		time.sleep(0.2)
+		time.sleep(0.08)
 
+	time.sleep(1)
 	print '\nTotal number of words = 113809'
 	print table
 

@@ -11,6 +11,7 @@ from ends_with import *
 from allstar_words import *
 from prettytable import PrettyTable
 from is_there import *
+from is_there_dict import *
 from reverse_pairs import *
 from interlocked import *
 
@@ -82,7 +83,7 @@ if __name__=='__main__':
 			count = words_with_e(substring,print_bool)#disable printing words without char
 
 			time.sleep(2)#externally called to save time for allstars
-			print '\nwords containing',char,':',count
+			print '\nwords containing',substring,':',count
 
 			#else:
 			#	print 'char needs to be a single letter!'
@@ -101,7 +102,10 @@ if __name__=='__main__':
 
 		elif option=='9':
 			search_this = raw_input("Enter word to search for , in database : ")
+			print 'Method 1 : list and append'
 			is_there(search_this)
+			print 'Method 2 : dict()'
+			is_there_dict(search_this)
 
 		elif option=='10':
 			print 'Displaying all reverse pairs:'

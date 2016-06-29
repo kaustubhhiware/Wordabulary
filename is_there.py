@@ -1,5 +1,6 @@
 from bisect import bisect_left
 #Perfect example of hiding in plain sight
+import time
 
 def in_bisect(word_list, word):
     """
@@ -26,14 +27,17 @@ def word_list():
     
     return word_list
 
+
 def is_there(word):
-	"""
+    """
 
 		search for given word with binary sort
 		You'd think , you could just do 
 		word in list , n00b
 		Guess what,  it would take you ages !Go ahead , smarta$$
-	"""
-	listed = word_list()
-
-	print '\n',word, 'in list : ', in_bisect(listed,word)
+    """
+    start_time = time.time()
+    listed = word_list()
+    print '\n',word, 'in list : ', in_bisect(listed,word)
+    elapsed_time = time.time() - start_time
+    print 'elapsed_time :',elapsed_time,'seconds'
