@@ -10,7 +10,7 @@ def words_with_e(substring,is_print):
 	"""
 	#print ''
 	if is_print:
-		print 'Words with',char
+		print 'Words with',substring
 	count = 0
 	fin = open('words.txt')
 	for line in fin:

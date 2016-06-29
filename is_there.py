@@ -40,4 +40,4 @@ def is_there(word):
     listed = word_list()
     print '\n',word, 'in list : ', in_bisect(listed,word)
     elapsed_time = time.time() - start_time
-    print 'elapsed_time :',elapsed_time,'seconds'
+    #print 'elapsed_time :',elapsed_time,'seconds'

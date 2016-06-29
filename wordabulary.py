@@ -1,23 +1,29 @@
 # check this out - https://en.wikipedia.org/wiki/Moby_Project
 import time
 
-from length_sorter import *# option 1
-from has_no_e import *#option 2 , 3
-from has_no_these import *
-from has_only_these import *
-from is_abecedarian import *
-from words_with_e import *
-from ends_with import *
-from allstar_words import *
+import length_sorter
+import has_no_e 
+import has_no_these 
+import has_only_these  
+import is_abecedarian 
+import words_with_e 
+import ends_with 
+import allstar_words 
 from prettytable import PrettyTable
-from is_there import *
-from is_there_dict import *
-from reverse_pairs import *
-from interlocked import *
+import is_there 
+import is_there_dict 
+import reverse_pairs 
+import interlocked 
 
 #####
 #####	install prettytable - pip install prettytable
 #####
+
+
+####
+####	<3 : All functions are now imported for future clarity
+####
+
 if __name__=='__main__':
 	
 	print '\nWelcome to Wordabulary ! Choose your operation '
@@ -46,30 +52,30 @@ if __name__=='__main__':
 		elif option=='1':
 			longword=raw_input("Print all longer words \nWhat min. length of words? ")
 			longword = int(longword)
-			length_sorter(longword)
+			length_sorter.length_sorter(longword)
 
 		elif option=='2':
 			not_letters = raw_input("Enter forbidden letter(s) ,separated by , : ").split(",")
 			#not_let = map(char,not_letters.split(","))
 
 			word=raw_input("Enter word to check for forbidden letter(s) : ")
-			has_no_these(word,not_letters,True)#allow printing
+			has_no_these.has_no_these(word,not_letters,True)#allow printing
 
 		elif option=='3':
 			only_letters = raw_input("Enter allowed letter(s), unseparated: ")
 
 			word=raw_input("Enter word to check for allowed letter(s) : ")
-			has_only_these(word,only_letters,True)#allow printing
+			has_only_these.has_only_these(word,only_letters,True)#allow printing
 
 		elif option=='4':
 			fixed_letters = raw_input("Enter allowed letter(s), unseparated: ")
 
 			word=raw_input("Enter word to check if all allowed letter(s) are present: ")
-			has_only_these(fixed_letters,word,True)#allow printing
+			has_only_these.has_only_these(fixed_letters,word,True)#allow printing
 
 		elif option=='5':
 			word = raw_input("Enter word to be checked for abecedarian : ")
-			print is_abecedarian(word)		
+			print is_abecedarian.is_abecedarian(word)		
 
 		elif option=='6':
 			substring = raw_input("Enter substring to check how many words have it : ")
@@ -80,7 +86,8 @@ if __name__=='__main__':
 				print_bool=True
 
 			#if len(char)==1:
-			count = words_with_e(substring,print_bool)#disable printing words without char
+			count = words_with_e.words_with_e(substring,print_bool)
+			#disable printing words without char
 
 			time.sleep(2)#externally called to save time for allstars
 			print '\nwords containing',substring,':',count
@@ -92,29 +99,33 @@ if __name__=='__main__':
 			#extend later to rhyming words - sky , bye
 			substring=raw_input("Enter substring to check words which end with it : ")
 			#printing mandatory
-			ends_with(substring)
+			ends_with.ends_with(substring)
 
 
 		elif option=='8':
 			print 'Crunching numbers ... displaying count of words containing each letter'
-			allstar_words()
+			allstar_words.allstar_words()
 
 
 		elif option=='9':
 			search_this = raw_input("Enter word to search for , in database : ")
-			print 'Method 1 : list and append'
-			is_there(search_this)
-			print 'Method 2 : dict()'
-			is_there_dict(search_this)
+			
+			#	dict method faster upto 50% - for word boy
+			# check speed , uncomment time prints in these files v
+
+			#print 'Method 1 : list and append'
+			#is_there.is_there(search_this)
+			#print 'Method 2 : dict()'
+			is_there_dict.is_there_dict(search_this)
 
 		elif option=='10':
 			print 'Displaying all reverse pairs:'
 			char = raw_input("Begin with what letter? (all for complete) : ")
-			reverse_pairs(char)
+			reverse_pairs.reverse_pairs(char)
 
 
 		elif option=='11':
-			interlocked()
+			interlocked.interlocked()
 
 #Total number of words = 113809
 		else :

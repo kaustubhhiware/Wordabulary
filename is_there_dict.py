@@ -25,4 +25,4 @@ def is_there_dict(word):
 	print '\n',word,'in dict : ',word in source
 
 	elapsed_time = time.time() - start_time
-	print 'elapsed_time :',elapsed_time,'seconds'
+	#print 'elapsed_time :',elapsed_time,'seconds'
