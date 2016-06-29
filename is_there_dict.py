@@ -26,3 +26,4 @@ def is_there_dict(word):
 
 	elapsed_time = time.time() - start_time
 	#print 'elapsed_time :',elapsed_time,'seconds'
+	# upto 50 % better - check where this backtracks to in wordabulary

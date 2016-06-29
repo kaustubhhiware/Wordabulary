@@ -46,4 +46,4 @@ def allstar_words():
 	#To Do : 
 	
 	#a graph can be added
-	#alphabet wise and freq.wise
+	# freq.wise

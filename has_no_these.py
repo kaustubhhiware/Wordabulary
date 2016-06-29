@@ -1,5 +1,7 @@
 import time
 from has_no_e import *
+#allow usage from other files if only one import
+#import file.py necessary in case of wordabulary which imports 12 files!
 
 def has_no_these(word,not_letters,is_print):
 	"""

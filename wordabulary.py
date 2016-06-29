@@ -21,7 +21,7 @@ import interlocked
 
 
 ####
-####	<3 : All functions are now imported for future clarity
+####	<3 : All functions are now imported ,for future clarity
 ####
 
 if __name__=='__main__':
@@ -110,7 +110,8 @@ if __name__=='__main__':
 		elif option=='9':
 			search_this = raw_input("Enter word to search for , in database : ")
 			
-			#	dict method faster upto 50% - for word boy
+			#	dict method faster upto 50% - for word boy - 0.06 and 0.04 resp
+			#												map for worst case
 			# check speed , uncomment time prints in these files v
 
 			#print 'Method 1 : list and append'

@@ -1,7 +1,7 @@
 from is_there import *
 import time
 #schooled is interlocked - s h o e + c o l d
-
+# importing from is_there as it is heavily dependent
 
 def is_interlock(word_list, word):
     """
