@@ -14,7 +14,7 @@ import is_there
 import is_there_dict 
 import reverse_pairs 
 import interlocked 
-
+import histogram
 #####
 #####	install prettytable - pip install prettytable
 #####
@@ -42,6 +42,8 @@ if __name__=='__main__':
 		print '9 for checking if given word makes sense'
 		print '10 for printing all reverse pairs'
 		print '11 for printing interlocked words'
+		print '12 for obtaining char-distribution for a string'
+
 
 		print 'and 0 to exit\n'
 		option = raw_input("Enter choice : ")
@@ -127,6 +129,13 @@ if __name__=='__main__':
 
 		elif option=='11':
 			interlocked.interlocked()
+
+		elif option=='12':
+			inp_str = raw_input("Enter string to obtain histogram : ")
+			hist = histogram.histogram(inp_str)
+
+			print hist,'\n'
+			histogram.print_hist(hist)
 
 #Total number of words = 113809
 		else :
