@@ -177,7 +177,8 @@ if __name__=='__main__':
 
 		elif option=='15':
 			word = raw_input("Enter word for which rhyming words are needed : ")
-			rhyming.rhyming(word)
+			substr = raw_input("start with any substr ? enter * for all : ")
+			rhyming.rhyming(word,substr)
 
 
 
