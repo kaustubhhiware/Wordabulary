@@ -10,7 +10,7 @@ def create_dict():
 
 	for line in fin:
 		word = line.strip()
-		word_dict[word] = 'something relevant'
+		word_dict[word] = word
 
 	return word_dict
 

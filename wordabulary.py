@@ -1,6 +1,9 @@
 # check this out - https://en.wikipedia.org/wiki/Moby_Project
 import time
 
+from prettytable import PrettyTable
+
+#All hand-made modules
 import length_sorter
 import has_no_e 
 import has_no_these 
@@ -9,12 +12,14 @@ import is_abecedarian
 import words_with_e 
 import ends_with 
 import allstar_words 
-from prettytable import PrettyTable
 import is_there 
 import is_there_dict 
 import reverse_pairs 
 import interlocked 
 import histogram
+import rotate_pairs
+import pronounce
+import rhyming
 #####
 #####	install prettytable - pip install prettytable
 #####
@@ -43,6 +48,9 @@ if __name__=='__main__':
 		print '10 for printing all reverse pairs'
 		print '11 for printing interlocked words'
 		print '12 for obtaining char-distribution for a string'
+		print '13 for all rotated pair iterations'
+		print '14 for pronounciation for a word'
+		print '15 for rhyming words '
 
 
 		print 'and 0 to exit\n'
@@ -51,10 +59,12 @@ if __name__=='__main__':
 		if option=='0':
 			break
 
+
 		elif option=='1':
 			longword=raw_input("Print all longer words \nWhat min. length of words? ")
 			longword = int(longword)
 			length_sorter.length_sorter(longword)
+
 
 		elif option=='2':
 			not_letters = raw_input("Enter forbidden letter(s) ,separated by , : ").split(",")
@@ -63,11 +73,13 @@ if __name__=='__main__':
 			word=raw_input("Enter word to check for forbidden letter(s) : ")
 			has_no_these.has_no_these(word,not_letters,True)#allow printing
 
+
 		elif option=='3':
 			only_letters = raw_input("Enter allowed letter(s), unseparated: ")
 
 			word=raw_input("Enter word to check for allowed letter(s) : ")
 			has_only_these.has_only_these(word,only_letters,True)#allow printing
+
 
 		elif option=='4':
 			fixed_letters = raw_input("Enter allowed letter(s), unseparated: ")
@@ -75,9 +87,11 @@ if __name__=='__main__':
 			word=raw_input("Enter word to check if all allowed letter(s) are present: ")
 			has_only_these.has_only_these(fixed_letters,word,True)#allow printing
 
+
 		elif option=='5':
 			word = raw_input("Enter word to be checked for abecedarian : ")
 			print is_abecedarian.is_abecedarian(word)		
+
 
 		elif option=='6':
 			substring = raw_input("Enter substring to check how many words have it : ")
@@ -96,6 +110,7 @@ if __name__=='__main__':
 
 			#else:
 			#	print 'char needs to be a single letter!'
+
 
 		elif option=='7':
 			#extend later to rhyming words - sky , bye
@@ -121,6 +136,7 @@ if __name__=='__main__':
 			#print 'Method 2 : dict()'
 			is_there_dict.is_there_dict(search_this)
 
+
 		elif option=='10':
 			print 'Displaying all reverse pairs:'
 			char = raw_input("Begin with what letter? (all for complete) : ")
@@ -130,12 +146,42 @@ if __name__=='__main__':
 		elif option=='11':
 			interlocked.interlocked()
 
+
 		elif option=='12':
 			inp_str = raw_input("Enter string to obtain histogram : ")
 			hist = histogram.histogram(inp_str)
 
 			print hist,'\n'
 			histogram.print_hist(hist)
+
+
+		elif option=='13':
+			substr = raw_input("Enter substring from which words are to be rotated : ")
+			rotate_pairs.iterate(substr)
+
+
+		elif option=='14':
+			word = raw_input("Enter word to pronounce :")
+
+			pron = pronounce.print_pronounce(word)
+			if pron!='0':
+				print 'Pronounce as : ',pron
+
+				show_guide = raw_input("Enter y to see pronounciation guide : ")
+				if show_guide=='y':
+					pronounce.guide()
+					
+			else:
+				print 'Pronunciation not found! Did you enter a valid word ? Check using option 9'
+
+
+		elif option=='15':
+			word = raw_input("Enter word for which rhyming words are needed : ")
+			rhyming.rhyming(word)
+
+
+
+
 
 #Total number of words = 113809
 		else :

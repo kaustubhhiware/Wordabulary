@@ -1,6 +1,7 @@
 from is_there import *
 import time
 
+
 def is_reverse_there(word_list, word):
     """
 
@@ -17,6 +18,7 @@ def reverse_pairs(char):
     """   
     listed = word_list()
     count = 0 
+
     for word in listed:
 
         if char!='all':
