@@ -1,6 +1,5 @@
 # check this out - https://en.wikipedia.org/wiki/Moby_Project
 import time
-
 from prettytable import PrettyTable
 
 #All hand-made modules
@@ -20,6 +19,7 @@ import histogram
 import rotate_pairs
 import pronounce
 import rhyming
+import crossword
 #####
 #####	install prettytable - pip install prettytable
 #####
@@ -51,7 +51,7 @@ if __name__=='__main__':
 		print '13 for all rotated pair iterations'
 		print '14 for pronounciation for a word'
 		print '15 for rhyming words '
-
+		print '16 for crossword-aids/find out what this is'
 
 		print 'and 0 to exit\n'
 		option = raw_input("Enter choice : ")
@@ -180,7 +180,16 @@ if __name__=='__main__':
 			substr = raw_input("start with any substr ? enter * for all : ")
 			rhyming.rhyming(word,substr)
 
-
+		elif option=='16':
+			print 'Do you wonder what is 6 letter word with y as 2nd letter and ends with n ?'
+			time.sleep(1)
+			print 'i.e, a word _y___n ?\nThis is perfect for you !'
+			time.sleep(1)
+			print 'just type _y__n or -y--n and voila , all possibilities are given!'
+			print 'Psst : it\'s python'
+			time.sleep(1)
+			mystery_word = raw_input("\nEnter your mystery word in the above format : ")
+			crossword.crossword(mystery_word)
 
 
 

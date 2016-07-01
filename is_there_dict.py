@@ -1,12 +1,12 @@
 import time
 
-def create_dict():
+def create_dict(filename='words.txt'):
 	"""
 
 		Add each string as key in a dict
 	"""
 	word_dict = dict()
-	fin = open('words.txt')
+	fin = open(filename)
 
 	for line in fin:
 		word = line.strip()
