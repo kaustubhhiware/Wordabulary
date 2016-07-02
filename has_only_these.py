@@ -36,3 +36,11 @@ def has_only_these(word,only_letters,is_print):
 		else:
 			return True
 	time.sleep(2)
+
+
+
+if __name__=='__main__':
+	only_letters = raw_input("Enter allowed letter(s), unseparated: ")
+
+	word=raw_input("Enter word to check for allowed letter(s) : ")
+	has_only_these(word,only_letters,True)#allow printing

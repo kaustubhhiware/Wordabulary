@@ -64,4 +64,16 @@ def crossword(mystery_word):
 		time.sleep(0.1)
 
 	print '\nTotal alternatives : ',matches
-			
+
+
+if __name__ == '__main__':
+	
+	print 'Do you wonder what is 6 letter word with y as 2nd letter and ends with n ?'
+	time.sleep(1)
+	print 'i.e, a word _y___n ?\nThis is perfect for you !'
+	time.sleep(1)
+	print 'just type _y__n or -y--n and voila , all possibilities are given!'
+	print 'Psst : it\'s python'
+	time.sleep(1)
+	mystery_word = raw_input("\nEnter your mystery word in the above format : ")
+	crossword(mystery_word)

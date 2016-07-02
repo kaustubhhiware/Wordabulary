@@ -2,7 +2,7 @@ from pronounce import pronounce_dict
 from rotate_pairs import starts_with
 import time
 
-def create_word_dict(filename='c06d'):
+def create_word_dict(filename='reference/c06d'):
     """
 
         Build a dictionary from file only for keys
@@ -80,29 +80,9 @@ def rhyming(singel,starts):
     print '\nTotal alternatives : ',count,'\n'
 
 
+
 if __name__ == '__main__':
-    phonetic = pronounce_dict()
-    word_dict = create_dict()
-
-
-    singel = raw_input("Enter word for which rhyming words are needed : ")
+                
+    word = raw_input("Enter word for which rhyming words are needed : ")
     substr = raw_input("start with any substr ? enter * for all : ")
-
-    listed =[]
-    for word in word_dict:
-        if starts!= '*' :
-            if starts_with(starts,word):
-                if check_rhyme(singel,word, word_dict, phonetic):
-                    listed.append(word)
-                    count += 1
-        else :
-            if check_rhyme(singel,word, word_dict, phonetic):
-                    listed.append(word)
-                    count += 1
-
-    listed.sort()
-    for word in listed:
-        print word
-        time.sleep(0.01)
-
-    print '\nTotal alternatives : ',count,'\n'
+    rhyming(word,substr)

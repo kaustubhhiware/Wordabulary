@@ -21,7 +21,7 @@ def reverse_pairs(char):
 
     for word in listed:
 
-        if char!='all':
+        if char!='*':
             if word[0]!=char:
                 continue
                 #continue if word doesn't begin with letter
@@ -30,7 +30,14 @@ def reverse_pairs(char):
             count += 1
             print word, word[::-1]
             time.sleep(0.01)
-            if char!='all':
+            if char!='*':
                 time.sleep(0.04)#so le jara , so le jara
 
     print '\nTotal words : ',count,'\n'
+
+
+if __name__ == '__main__':
+    
+    print 'Displaying all reverse pairs:'
+    char = raw_input("Begin with what letter? (* for complete) : ")
+    reverse_pairs(char)

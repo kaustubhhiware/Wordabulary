@@ -19,7 +19,7 @@ def word_list():
     	Prepare word list to search in
     """
     word_list = []
-    fin = open('words.txt')
+    fin = open('reference/words.txt')
 
     for line in fin:
         word = line.strip()
@@ -41,3 +41,6 @@ def is_there(word):
     print '\n',word, 'in list : ', in_bisect(listed,word)
     elapsed_time = time.time() - start_time
     #print 'elapsed_time :',elapsed_time,'seconds'
+
+
+#main function removed as deprecated

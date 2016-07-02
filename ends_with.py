@@ -12,7 +12,7 @@ def ends_with(substring):
 	start_from = len(substring)
 	count = 0
 	start_time = time.time()
-	fin = open('words.txt')
+	fin = open('reference/words.txt')
 	for line in fin:
 		word = line.strip()#get rid of \r
 
@@ -40,7 +40,7 @@ def ends_with(substring):
 	# 0.2417 and 0.24107 - approach 2 overall better
 	count = 0
 	start_time = time.time()
-	fin = open('words.txt')
+	fin = open('reference/words.txt')
 	for line in fin:
 		##Approach 2:check only for words containing that substring
 		#####		Debug later and check which is faster
@@ -58,3 +58,10 @@ def ends_with(substring):
 
 	elapsed_time = time.time() - start_time
 	print '\nTotal words :', count#,' in time :',elapsed_time
+
+
+if __name__=='__main__':
+
+	substring=raw_input("Enter substring to check words which end with it : ")
+	
+	ends_with(substring)

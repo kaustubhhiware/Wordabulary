@@ -7,7 +7,7 @@ def guide():
         print guide for pronunciation 
         needs file c06d_guide - available on below website
     """
-    fin = open('c06d_guide')
+    fin = open('reference/c06d_guide')
     table = PrettyTable(['Phoneme','example','Translation'])
 
     for line in fin:
@@ -23,7 +23,7 @@ def guide():
     print table
 
 
-def pronounce_dict(filename='c06d'):
+def pronounce_dict(filename='reference/c06d'):
     """
 
         Build a dictionary from file 
@@ -59,6 +59,15 @@ def print_pronounce(word):
 
 
 if __name__=='__main__':
-    d = pronounce_dict()
-    for k, v in d.items():
-        print k, v        
+    word = raw_input("Enter word to pronounce :")
+
+    pron = print_pronounce(word)
+    if pron!='0':
+        print 'Pronounce as : ',pron
+
+        show_guide = raw_input("Enter y to see pronounciation guide : ")
+        if show_guide=='y':
+            guide()
+                    
+    else:
+        print 'Pronunciation not found! Did you enter a valid word ? Check using option 9'    

@@ -38,3 +38,11 @@ def has_no_these(word,not_letters,is_print):
 		else:
 			return True
 	time.sleep(2)
+
+
+
+if __name__=='__main__':
+	not_letters = raw_input("Enter forbidden letter(s) ,separated by , : ").split(",")
+
+	word=raw_input("Enter word to check for forbidden letter(s) : ")
+	has_no_these(word,not_letters,True)#allow printing

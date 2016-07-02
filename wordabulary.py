@@ -20,13 +20,20 @@ import rotate_pairs
 import pronounce
 import rhyming
 import crossword
+import booker#new submenu
 #####
 #####	install prettytable - pip install prettytable
 #####
 
 
 ####
-####	<3 : All functions are now imported ,for future clarity
+####	<3 : All functions are now imported ,for future clarity	
+####	I could have had a function called display in each of the modules
+####	which would handle the input like their main 's , but I intend not to do so.
+####	This way, you don't have to view each file to understand what that option does
+####	So , without wasting time , you can understand the code structure in this file itself
+####	That being said , each module can be run individually as well
+####	This file just unites and displays them together
 ####
 
 if __name__=='__main__':
@@ -35,7 +42,7 @@ if __name__=='__main__':
 
 	while True:
 		time.sleep(1)
-		print '#operations '
+		print '\n#operations '
 		print '1 for printing words above some length'
 		print '2 for checking if a group of letters are not present in a word'
 		print '3 for checking if a group of letters are only present in a word'
@@ -52,7 +59,7 @@ if __name__=='__main__':
 		print '14 for pronounciation for a word'
 		print '15 for rhyming words '
 		print '16 for crossword-aids/find out what this is'
-
+		print '17 for books/document analysis'
 		print 'and 0 to exit\n'
 		option = raw_input("Enter choice : ")
 
@@ -128,7 +135,7 @@ if __name__=='__main__':
 			search_this = raw_input("Enter word to search for , in database : ")
 			
 			#	dict method faster upto 50% - for word boy - 0.06 and 0.04 resp
-			#												map for worst case
+			#										map for worst case
 			# check speed , uncomment time prints in these files v
 
 			#print 'Method 1 : list and append'
@@ -139,7 +146,7 @@ if __name__=='__main__':
 
 		elif option=='10':
 			print 'Displaying all reverse pairs:'
-			char = raw_input("Begin with what letter? (all for complete) : ")
+			char = raw_input("Begin with what letter? (* for complete) : ")
 			reverse_pairs.reverse_pairs(char)
 
 
@@ -191,6 +198,13 @@ if __name__=='__main__':
 			mystery_word = raw_input("\nEnter your mystery word in the above format : ")
 			crossword.crossword(mystery_word)
 
+
+
+		elif option=='17':
+			booker.initialise()
+
+
+#generate anagrams of word
 
 
 #Total number of words = 113809

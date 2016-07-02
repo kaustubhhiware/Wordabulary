@@ -7,7 +7,7 @@ def length_sorter(longword):
 	"""
 	print ' '
 	count = 0
-	fin = open('words.txt')
+	fin = open('reference/words.txt')
 	for line in fin:
 		word = line.strip()#get rid of \r
 	
@@ -18,3 +18,10 @@ def length_sorter(longword):
 	print '\nTotal words printed : ',count
 	print ' '
 	time.sleep(2)
+
+
+if __name__=='__main__':
+
+	longword=raw_input("Print all longer words \nWhat min. length of words? ")
+	longword = int(longword)
+	length_sorter(longword)

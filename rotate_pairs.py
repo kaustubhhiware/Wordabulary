@@ -59,9 +59,6 @@ def iterate(substr):
 
 
 if __name__ == '__main__':
-    word_dict = create_dict()
-
-    for word in word_dict:
-        rotate_pairs(word, word_dict)
-
-    print table
+    
+    substr = raw_input("Enter substring from which words are to be rotated : ")
+    iterate(substr)

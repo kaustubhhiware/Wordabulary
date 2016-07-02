@@ -46,3 +46,7 @@ def interlocked():
 #    for word in word_list:
 #        if interlock_general(listed, word, 3):
 #            print word, word[0::3], word[1::3], word[2::3]
+
+
+if __name__ == '__main__':
+    interlocked()

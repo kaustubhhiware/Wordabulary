@@ -25,7 +25,7 @@ def find_triple_double():
 
     	Reads a word list and prints words with triple double letters.
     """
-    fin = open('words.txt')
+    fin = open('reference/words.txt')
     for line in fin:
         word = line.strip()
         if is_triple_double(word):

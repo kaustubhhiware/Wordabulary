@@ -47,3 +47,9 @@ def allstar_words():
 	
 	#a graph can be added
 	# freq.wise
+
+
+
+if __name__ == '__main__':
+	print 'Crunching numbers ... displaying count of words containing each letter'
+	allstar_words()
