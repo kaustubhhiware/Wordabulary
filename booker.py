@@ -1,5 +1,6 @@
 import time
 import booker_most_frequent
+import booker_correct
 
 def initialise():
 	"""
@@ -16,22 +17,22 @@ def initialise():
 		print '\n\t and 0 to exit this submenu'
 	
 		option = raw_input("\tYour choice :")
-
+		print '\tTIP : start with / if address for file is not local'
 		if option=='0' or option=='clear':
 			break
 
 
 		elif option=='1':
-			filer=raw_input("\tEnter your file for freq dist(start with/if not local address):\n\t")
-			booker_most_frequent.iterate_char(filer)	
+			filer=raw_input("\tEnter your file for frequency distribution:\n\t")
+			booker_most_frequent.iterate(filer,'char')	
 		
 		elif option=='2':
-			filer=raw_input("\tEnter your file for word dist(start with/if not local address):\n\t")
-			booker_correct.iterate_word(filer)
+			filer=raw_input("\tEnter your file for word distribution:\n\t")
+			booker_most_frequent.iterate(filer,'word')
 
 		elif option=='3':
-			filer = raw_input("\tEnter your file for typos(start with/if not local address ): ")
-			booker_correct.iterate(filer)	
+			filer = raw_input("\tEnter your file for typos:\n\t ")
+			booker_correct.correct(filer)	
 
 
 		else :

@@ -37,14 +37,14 @@ def allstar_words():
 		letters.append(i+1)
 		frequency.append(words_with_e(char,False))
 
-		percent = get_percent_in2points(frequency[i],113809)
+		percent = get_percent_in2points(frequency[i],total_words())#total from words_with_e
 
-		table.add_row([char , frequency[i] , percent])	#Total number of words = 113809
+		table.add_row([char , frequency[i] , percent])	
 		print 'Counting words with ',char,'...'
 		time.sleep(0.08)
 
 	time.sleep(1)
-	print '\nTotal number of words = 113809'
+	print '\nTotal number of words = ',total_words()
 	print table
 
 	show_freq = raw_input("Enter y to display alphabet wise plot : ")
