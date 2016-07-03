@@ -16,17 +16,17 @@ def initialise():
 	
 		option = raw_input("\tYour choice :")
 
-		if option=='0':
+		if option=='0' or option=='clear':
 			break
 
 
 		elif option=='1':
-			filer = raw_input("\tEnter your file : ")
+			filer = raw_input("\tEnter your file (start with / if not local address ): ")
 			booker_most_frequent.iterate(filer)	
 		
 
 		else :
-			print 'Incorrect choice :(\n'
+			print '\tIncorrect choice :(\n'
 
 		time.sleep(1)
 		print '\n'

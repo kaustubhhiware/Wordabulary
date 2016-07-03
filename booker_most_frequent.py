@@ -1,27 +1,22 @@
 import random
 import os.path
+import time
+from prettytable import PrettyTable
 
-def most_frequent(s):
-    """Sorts the letters in s in reverse order of frequency.
+####
+####    NOTE : booker_most_frequent counts all occurences while
+####            allstar_words checks for number of words , they are different !
+####
 
-    s: string
-
-    Returns: list of letters
+# this function pasted here as this file is imported in allstar for most_frequent
+def get_percent_in2points(freq,total):
     """
-    hist = make_histogram(s)
+        get percent of total from freq as xx.xx%
+    """
+    percent = 100.0*freq/total
+    percent = int(100*percent)/100.0
+    return percent
 
-    t = []
-    for x, freq in hist.iteritems():
-        t.append((freq, x))
-
-    t.sort(reverse=True)
-
-    res = []
-    for freq, x in t:
-        res.append(x)
-
-    return res
-    
 
 def make_histogram(s):
     """Make a map from letters to number of times they appear in s.
@@ -36,8 +31,47 @@ def make_histogram(s):
     return hist
 
 
+
+def total_freq(t):
+    """
+
+        Return total occurences of letters
+    """
+    count = 0
+    for freq,x in t:
+        count += freq
+
+    return count
+
+
+def most_frequent(doc):
+    """
+
+        Sorts the letters in doc in reverse order of frequency.
+    """
+    hist = make_histogram(doc)
+
+    t = []
+    for x, freq in hist.iteritems():
+        t.append((freq, x))
+
+    t.sort(reverse=True)
+
+    result = []
+    #list of tuples
+
+    tots = total_freq(t)
+    for freq, x in t:
+        
+        #if x!=' ':
+                    # space is not a char
+        percentage = get_percent_in2points(freq,tots)
+        result.append((x,freq,percentage))
+
+    return result,tots
+
+
 def read_file(filename):
-    """Returns the contents of a file as a string."""
     return open(filename).read()
 
 
@@ -47,13 +81,24 @@ def iterate(filer):
     """
     
     if not os.path.isfile(filer):
-    	print '\tNot a valid file !'
+    	print '\tNot a valid file !Returning now...'
     	return 
-    print 'File found!Working ...'
-    s = read_file(filer)
-    t = most_frequent(s)
-    for x in t:
-        print x
+
+    print '\tFile found!Working ...'
+    doc = read_file(filer)
+    table = PrettyTable(['Char','Freq','%'])
+
+    out,tots = most_frequent(doc)
+    for x,freq,percent in out:
+        table.add_row([x,freq,percent])
+        #print x
+
+    print table
+    time.sleep(1)
+    print '\tTotal words in document : ',tots
+
+
+
 
 if __name__ == '__main__':
     filer = raw_input("\tEnter your file : ")

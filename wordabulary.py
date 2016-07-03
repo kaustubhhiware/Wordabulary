@@ -21,6 +21,7 @@ import pronounce
 import rhyming
 import crossword
 import booker#new submenu
+import anagrams
 #####
 #####	install prettytable - pip install prettytable
 #####
@@ -60,10 +61,13 @@ if __name__=='__main__':
 		print '15 for rhyming words '
 		print '16 for crossword-aids/find out what this is'
 		print '17 for books/document analysis'
+		print '18 for anagram of given word'
+
 		print 'and 0 to exit\n'
+		
 		option = raw_input("Enter choice : ")
 
-		if option=='0':
+		if option=='0' or 'clear':
 			break
 
 
@@ -202,6 +206,11 @@ if __name__=='__main__':
 
 		elif option=='17':
 			booker.initialise()
+
+
+		elif option=='18':
+			word = raw_input("Enter word to check all its anagrams : ")
+			anagrams.print_anagrams(word)
 
 
 #generate anagrams of word

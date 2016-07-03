@@ -6,6 +6,15 @@ from prettytable import PrettyTable
 
 import matplotlib.pyplot as plt
 from plotters import *
+import booker_most_frequent #use for ordering
+
+def get_percent_in2points(freq,total):
+	"""
+		get percent of total from freq as xx.xx%
+	"""
+	percent = 100.0*freq/total
+	percent = int(100*percent)/100.0
+	return percent
 
 def allstar_words():
 	"""
@@ -28,8 +37,8 @@ def allstar_words():
 		letters.append(i+1)
 		frequency.append(words_with_e(char,False))
 
-		percent = 100.0*frequency[i]/113809
-		percent = int(100*percent)/100.0
+		percent = get_percent_in2points(frequency[i],113809)
+
 		table.add_row([char , frequency[i] , percent])	#Total number of words = 113809
 		print 'Counting words with ',char,'...'
 		time.sleep(0.08)
@@ -42,7 +51,21 @@ def allstar_words():
 	if show_freq=='y':
 		plot_letters(letters,frequency)
 
-
+	#under development
+	"""
+	to_sort = raw_input("See sorted version ? press y : ")
+	if to_sort == 'y':
+	
+		book = booker_most_frequent.read_file('reference/words.txt')
+		result , tots = booker_most_frequent.most_frequent(book)
+		
+		let = []
+		frew = []
+		for x,freq,percent in result:
+			let.append(ord(x) - start)
+			frew.append(freq)
+		plot_letters(let,frew)
+	"""
 	#To Do : 
 	
 	#a graph can be added
