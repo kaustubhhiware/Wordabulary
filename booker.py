@@ -11,7 +11,8 @@ def initialise():
 	while True :
 		print '\t#operations'
 		print '\t1 for finding most frequent words in a book(txt file)'
-
+		print '\t2 for finding most frequent words in a book(txt file)'
+		print '\t3 for finding all typos in a book'
 		print '\n\t and 0 to exit this submenu'
 	
 		option = raw_input("\tYour choice :")
@@ -21,9 +22,17 @@ def initialise():
 
 
 		elif option=='1':
-			filer = raw_input("\tEnter your file (start with / if not local address ): ")
-			booker_most_frequent.iterate(filer)	
+			filer=raw_input("\tEnter your file for freq dist(start with/if not local address):\n\t")
+			booker_most_frequent.iterate_char(filer)	
 		
+		elif option=='2':
+			filer=raw_input("\tEnter your file for word dist(start with/if not local address):\n\t")
+			booker_correct.iterate_word(filer)
+
+		elif option=='3':
+			filer = raw_input("\tEnter your file for typos(start with/if not local address ): ")
+			booker_correct.iterate(filer)	
+
 
 		else :
 			print '\tIncorrect choice :(\n'

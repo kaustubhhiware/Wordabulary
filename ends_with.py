@@ -43,7 +43,6 @@ def ends_with(substring):
 	fin = open('reference/words.txt')
 	for line in fin:
 		##Approach 2:check only for words containing that substring
-		#####		Debug later and check which is faster
 		word = line.strip()#get rid of \r
 
 		if has_no_e(word,substring)==False:

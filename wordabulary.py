@@ -67,7 +67,7 @@ if __name__=='__main__':
 		
 		option = raw_input("Enter choice : ")
 
-		if option=='0' or 'clear':
+		if option=='0' or option=='clear':
 			break
 
 
