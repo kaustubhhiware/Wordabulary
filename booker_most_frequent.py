@@ -3,7 +3,6 @@ import time
 from prettytable import PrettyTable
 import string
 
-import histogram
 ####
 ####    NOTE : booker_most_frequent counts all occurences while
 ####            allstar_words checks for number of words , they are different !
@@ -43,17 +42,20 @@ def char_histogram(s):
     """
     hist = {}
     for x in s:
+        x = x.lower()
         hist[x] = hist.get(x, 0) + 1
     return hist
 
 
+#changing approach for handling BS
+"""
 def word_histogram(doc):
-    """
+    ""
 
         split words to get histogram for words
 
         doc is just one line of content
-    """
+    ""
     d = dict()
     punctuations = string.punctuation
     #print punctuations
@@ -64,24 +66,47 @@ def word_histogram(doc):
     while index < len(doc):
         if doc[index] ==" " or doc[index] in punctuations:#split at spaces, comma, dot, etc
 
+            his = True
             if doc[index]=='\'' or doc[index]=='`':
                 if doc[index+1]=='s':
-                    continue#skip over if words like "nature's" come
+                    his = False#skip over if words like "nature's" come
 
-            if index!=len(doc)-1 and doc[index+1]==" ":#new line sort
-                prev_pause = index + 2
-            else:
-                #print 'punk : ',doc[index]
-                curr_pause = index
-                this_word = doc[prev_pause:curr_pause]
-                this_word = this_word.lower()
-                if this_word!='':
-                    #print 'word:',this_word,':'
-                    d[this_word] = d.get(this_word, 0) + 1
-                prev_pause = curr_pause+1
+            if his:
+                if index!=len(doc)-1 and doc[index+1]==" ":#new line sort
+                    prev_pause = index + 2
+                else:   
+                        #print 'punk : ',doc[index]
+                        curr_pause = index
+                        this_word = doc[prev_pause:curr_pause]
+                        this_word = this_word.lower()
+                        if this_word!='':
+                            #print 'word:',this_word,':'
+                            d[this_word] = d.get(this_word, 0) + 1
+                        prev_pause = curr_pause+1
 
         index += 1
     return d
+"""
+
+
+def word_histogram(doc):
+    hist = {}
+    fp = file(doc)
+
+    punctuation = string.punctuation
+    for line in fp:
+        # replace hyphens with spaces before splitting
+        line = line.replace('-', ' ')
+    
+        for word in line.split():
+            # remove punctuation and convert to lowercase
+            word = word.strip(string.punctuation + string.whitespace)
+            word = word.lower()
+
+            # update the histogram
+            hist[word] = hist.get(word, 0) + 1
+
+    return hist
 
 
 def most_frequent(doc,typef='char',to_limit=False):
@@ -90,7 +115,7 @@ def most_frequent(doc,typef='char',to_limit=False):
         Sorts the typef in doc in reverse order of frequency.
     """
     if typef =='char':
-        hist = histogram.histogram(doc)
+        hist = char_histogram(doc)
 
     elif typef =='word':
         hist = word_histogram(doc)
@@ -106,7 +131,6 @@ def most_frequent(doc,typef='char',to_limit=False):
     #list of tuples
     limit = 0# to limit only 20 most frequent words
     tots = total_freq(t)
-
     for freq, x in t:
         
         #if x!=' ':
@@ -141,16 +165,12 @@ def iterate(filer,typef='char'):
     elif typef=='word':    
         #why this approach ? Well, it wasn't working with new lines.
         #courtesy http://stackoverflow.com/questions/19351164/multiple-line-file-into-one-string
-        with open(filer) as f:
-        
-            data=''.join(line.rstrip() for line in f)
-        
-        print '\tNOTE : If your file is too big , the analysis may fail'
+        print '\tNOTE : If your file is too big , the analysis may take a long time'
         to_limit = raw_input("\tEnter y to limit display top 20 entities : ")
         if to_limit=='y':
             to_limit = True
 
-        out,tots = most_frequent(data,'word',to_limit)
+        out,tots = most_frequent(filer,'word',to_limit)
         table = PrettyTable(['Word','Freq','%'])
 
     for x,freq,percent in out:
@@ -158,12 +178,13 @@ def iterate(filer,typef='char'):
 
     print table
     time.sleep(1)
-    print '\tTotal words in document : ',tots
+    print '\tTotal entities in document : ',tots
+    print '\tTotal unique entities : ',len(out)
 
 
 if __name__ == '__main__':
     
-    print '\t1 for finding most frequent words in a book(txt file)'
+    print '\t1 for finding most frequent chars in a book(txt file)'
     print '\t2 for finding most frequent words in a book(txt file)'
     print '\n\t and 0 to exit this submenu'
     

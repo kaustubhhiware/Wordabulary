@@ -11,7 +11,7 @@ def initialise():
 
 	while True :
 		print '\t#operations'
-		print '\t1 for finding most frequent words in a book(txt file)'
+		print '\t1 for finding most frequent chars in a book(txt file)'
 		print '\t2 for finding most frequent words in a book(txt file)'
 		print '\t3 for finding all typos in a book'
 		print '\n\t and 0 to exit this submenu'
