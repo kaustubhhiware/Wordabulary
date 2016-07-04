@@ -10,6 +10,7 @@ def create_dict(filename='reference/words.txt'):
 
 	for line in fin:
 		word = line.strip()
+		word = word.lower()
 		word_dict[word] = word
 
 	return word_dict

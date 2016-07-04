@@ -113,6 +113,7 @@ def most_frequent(doc,typef='char',to_limit=False):
     """
 
         Sorts the typef in doc in reverse order of frequency.
+        return reverse sorted version along with num_words in doc.
     """
     if typef =='char':
         hist = char_histogram(doc)
@@ -169,7 +170,12 @@ def iterate(filer,typef='char'):
         to_limit = raw_input("\tEnter y to limit display top 20 entities : ")
         if to_limit=='y':
             to_limit = True
-
+        #deprecated
+        #with open(filer) as f:
+        #
+        #    data=''.join(line.rstrip() for line in f)
+        #out,tots = most_frequent(data,'word',to_limit)
+        
         out,tots = most_frequent(filer,'word',to_limit)
         table = PrettyTable(['Word','Freq','%'])
 

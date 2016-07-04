@@ -9,11 +9,15 @@ import booker_most_frequent
 #similar to booker_most_frequent.word_histogram , but here
 # we are first separating word , and then checking if that word is in dictionary
 # rudimentary now - need to return what line is wrong , along with correction suggestion
+####3
+####3	deprecated
+####3
+"""
 def check_data(data):
-	"""
+	""
 
-		check if eah word in data is present in dictionary.
-	"""
+		check if each word in data is present in dictionary.
+	""
 	reference_dict = is_there_dict.create_dict()
 
 	#punctuations = string.punctuation
@@ -48,6 +52,25 @@ def check_data(data):
 				prev_pause = curr_pause+1
 		index += 1
 	return sugg_corrections
+"""
+
+
+def check_data(transcript,reference_dict):
+	"""
+
+		return a dictionary of words in transcript not in reference_dict
+		Effectively , these are percieved as misspelled words.
+	"""
+	incorrect_dict = dict()
+	count = 0
+	for key ,freq,percent in transcript:
+
+		if key not in reference_dict:
+			#print key,' not in dict'
+			incorrect_dict[key] = 'suggest_correction_here'
+			count += freq	# a word may be misspelled multiple times
+
+	return incorrect_dict,count
 
 
 def correct(filer):
@@ -56,12 +79,16 @@ def correct(filer):
 		print '\tNot a valid file !Returning now...'
 		return 
 
-	with open(filer) as f:
-        
-		data=''.join(line.rstrip() for line in f)
+	out,tot_words_doc = booker_most_frequent.most_frequent(filer,'word')
+	reference_dict = is_there_dict.create_dict()
 
-	count = check_data(data)
-	print '\n\tSuggested corrections : ',count
+	incorrect_dict,count = check_data(out,reference_dict)
+	print '\n'	
+	for key in incorrect_dict:
+		print '\t',key
+
+	time.sleep(2)
+	print '\n\tTotal misspelled occurences : ',count
 
 
 
