@@ -33,7 +33,7 @@ def words_with_e(substring,is_print):
 					print word
 					time.sleep(0.1)
 				count += 1
-	#Total number of words = 113809
+	#Total number of words = 113809 - now updated ! - has some 540233 words
 	#count = 113809 - count# faster to check how many words don't have that letter
 	# I call B.S - new words should be added freely
 

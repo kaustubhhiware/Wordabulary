@@ -7,10 +7,7 @@ def histogram(string):
 	"""
 	d = dict()
 	for char in string:
-		#if char not in d:
-		#	d[char] = 1
-		#else:
-		#	d[char] += 1
+		#check deprecated folder for naive
 		d[char] = d.get(char,0) + 1
 				#	get key , default_value
 

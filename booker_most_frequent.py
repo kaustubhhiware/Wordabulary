@@ -47,48 +47,7 @@ def char_histogram(s):
     return hist
 
 
-#changing approach for handling BS
-"""
-def word_histogram(doc):
-    ""
-
-        split words to get histogram for words
-
-        doc is just one line of content
-    ""
-    d = dict()
-    punctuations = string.punctuation
-    #print punctuations
-    prev_pause = 0
-    curr_pause = 0
-    index = 0
-
-    while index < len(doc):
-        if doc[index] ==" " or doc[index] in punctuations:#split at spaces, comma, dot, etc
-
-            his = True
-            if doc[index]=='\'' or doc[index]=='`':
-                if doc[index+1]=='s':
-                    his = False#skip over if words like "nature's" come
-
-            if his:
-                if index!=len(doc)-1 and doc[index+1]==" ":#new line sort
-                    prev_pause = index + 2
-                else:   
-                        #print 'punk : ',doc[index]
-                        curr_pause = index
-                        this_word = doc[prev_pause:curr_pause]
-                        this_word = this_word.lower()
-                        if this_word!='':
-                            #print 'word:',this_word,':'
-                            d[this_word] = d.get(this_word, 0) + 1
-                        prev_pause = curr_pause+1
-
-        index += 1
-    return d
-"""
-
-
+#you might want to look at deprecated/ this file for naive implementation
 def word_histogram(doc):
     hist = {}
     fp = file(doc)

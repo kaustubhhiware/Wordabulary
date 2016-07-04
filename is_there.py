@@ -44,3 +44,4 @@ def is_there(word):
 
 
 #main function removed as deprecated
+#not in deprecated as essential for reverse_pairs in_bisect is used

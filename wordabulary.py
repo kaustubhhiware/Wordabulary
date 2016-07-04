@@ -216,6 +216,6 @@ if __name__=='__main__':
 #generate anagrams of word
 
 
-#Total number of words = 113809
+#Total number of words = 113809 - now updated ! - has some 540233 words
 		else :
 			print 'Incorrect choice :(\n'

@@ -1,4 +1,5 @@
 import time
+import is_there
 
 def create_dict(filename='reference/words.txt'):
 	"""
