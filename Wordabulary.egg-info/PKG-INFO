@@ -1,0 +1,16 @@
+Metadata-Version: 1.1
+Name: Wordabulary
+Version: 1.0
+Summary: A console-based software which may be used as a library for analysing word patterns, various properties of words, analysing documents.
+Home-page: https://github.com/kaustubhhiware/Wordabulary
+Author: Kaustubh Hiware
+Author-email: hiwarekaustubh@gmail.com
+License: GNU General Public License v3 (GPLv3)
+Description: UNKNOWN
+Keywords: Words,Vocabulary,wordplay,Literature,Books,Kaustubh Hiware,Python
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Programming Language :: Python :: 2.7
