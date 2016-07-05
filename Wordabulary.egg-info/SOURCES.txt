@@ -3,8 +3,8 @@ MANIFEST.in
 README.rst
 setup.cfg
 setup.py
-Wordabulary/Wordabulary.py
 Wordabulary/__init__.py
+Wordabulary/__main__.py
 Wordabulary/allstar_words.py
 Wordabulary/anagrams.py
 Wordabulary/booker.py
