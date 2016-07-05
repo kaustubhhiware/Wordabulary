@@ -15,10 +15,14 @@ def length_sorter(longword):
 			print word
 			time.sleep(1)
 			count = count + 1
-	print '\nTotal words printed : ',count
-	print ' '
-	time.sleep(2)
+	return count
+	#print '\nTotal words printed : ',count
+	#print ' '
+	#time.sleep(2)
 
+
+def length_sorter_call(inp):
+	print 'hi'
 
 if __name__=='__main__':
 

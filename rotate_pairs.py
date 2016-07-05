@@ -38,7 +38,7 @@ def rotate_pairs(word, word_dict,table):
             time.sleep(0.01)
 
 
-def iterate(substr):
+def iterate_rotors(substr):
     """
 
 		Function to work of main in case imported as module

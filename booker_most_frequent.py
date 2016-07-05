@@ -7,7 +7,6 @@ import string
 ####    NOTE : booker_most_frequent counts all occurences while
 ####            allstar_words checks for number of words , they are different !
 ####
-
 # this function pasted here as this file is imported in allstar for most_frequent
 def get_percent_in2points(freq,total):
     """
@@ -26,7 +25,6 @@ def total_freq(t):
     count = 0
     for freq,x in t:
         count += freq
-
     return count
 
 
@@ -84,17 +82,13 @@ def most_frequent(doc,typef='char',to_limit=False):
     for x, freq in hist.iteritems():
         t.append((freq, x))
 
-
     t.sort(reverse=True)
-
     result = []
     #list of tuples
     limit = 0# to limit only 20 most frequent words
     tots = total_freq(t)
     for freq, x in t:
         
-        #if x!=' ':
-        # space is not a char
         percentage = get_percent_in2points(freq,tots)
         result.append((x,freq,percentage))
 
@@ -106,7 +100,7 @@ def most_frequent(doc,typef='char',to_limit=False):
     return result,tots
 
 
-def iterate(filer,typef='char'):
+def iterate_booker(filer,typef='char'):
     """
 		main function module
     """
@@ -122,18 +116,11 @@ def iterate(filer,typef='char'):
         out,tots = most_frequent(doc,'char')
         table = PrettyTable(['Char','Freq','%'])
     
-    elif typef=='word':    
-        #why this approach ? Well, it wasn't working with new lines.
-        #courtesy http://stackoverflow.com/questions/19351164/multiple-line-file-into-one-string
+    elif typef=='word':   
         print '\tNOTE : If your file is too big , the analysis may take a long time'
         to_limit = raw_input("\tEnter y to limit display top 20 entities : ")
         if to_limit=='y':
             to_limit = True
-        #deprecated
-        #with open(filer) as f:
-        #
-        #    data=''.join(line.rstrip() for line in f)
-        #out,tots = most_frequent(data,'word',to_limit)
         
         out,tots = most_frequent(filer,'word',to_limit)
         table = PrettyTable(['Word','Freq','%'])

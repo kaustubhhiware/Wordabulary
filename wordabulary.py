@@ -3,25 +3,27 @@ import time
 from prettytable import PrettyTable
 
 #All hand-made modules
-import length_sorter
-import has_no_e 
-import has_no_these 
-import has_only_these  
-import is_abecedarian 
-import words_with_e 
-import ends_with 
-import allstar_words 
-import is_there 
-import is_there_dict 
-import reverse_pairs 
-import interlocked 
-import histogram
-import rotate_pairs
-import pronounce
-import rhyming
-import crossword
-import booker#new submenu
-import anagrams
+from length_sorter import *
+from has_no_e import * 
+from has_no_these import *
+from has_only_these import *
+from is_abecedarian import *
+from words_with_e import *
+from ends_with import *
+from allstar_words import *
+from is_there import *
+from is_there_dict import *
+from reverse_pairs import *
+from interlocked import *
+from histogram import *
+from rotate_pairs import *
+from pronounce import *
+from rhyming import *
+from crossword import *
+from booker import *#new submenu
+from booker_most_frequent import *
+from booker_correct import *
+from anagrams import *
 #####
 #####	install prettytable - pip install prettytable
 #####
@@ -168,7 +170,7 @@ if __name__=='__main__':
 
 		elif option=='13':
 			substr = raw_input("Enter substring from which words are to be rotated : ")
-			rotate_pairs.iterate(substr)
+			rotate_pairs.iterate_rotors(substr)
 
 
 		elif option=='14':

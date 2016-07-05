@@ -24,11 +24,11 @@ def initialise():
 
 		elif option=='1':
 			filer=raw_input("\tEnter your file for frequency distribution:\n\t")
-			booker_most_frequent.iterate(filer,'char')	
+			booker_most_frequent.iterate_booker(filer,'char')	
 		
 		elif option=='2':
 			filer=raw_input("\tEnter your file for word distribution:\n\t")
-			booker_most_frequent.iterate(filer,'word')
+			booker_most_frequent.iterate_booker(filer,'word')
 
 		elif option=='3':
 			filer = raw_input("\tEnter your file for typos:\n\t ")
