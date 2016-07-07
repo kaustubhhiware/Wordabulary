@@ -10,6 +10,8 @@ Wordabulary/anagrams.py
 Wordabulary/booker.py
 Wordabulary/booker_correct.py
 Wordabulary/booker_most_frequent.py
+Wordabulary/c06d.py
+Wordabulary/c06d_guide.py
 Wordabulary/crossword.py
 Wordabulary/ends_with.py
 Wordabulary/has_no_e.py
@@ -28,6 +30,7 @@ Wordabulary/rhyming.py
 Wordabulary/rotate.py
 Wordabulary/rotate_pairs.py
 Wordabulary/wordabulary.py
+Wordabulary/words_txt.py
 Wordabulary/words_with_e.py
 Wordabulary.egg-info/PKG-INFO
 Wordabulary.egg-info/SOURCES.txt

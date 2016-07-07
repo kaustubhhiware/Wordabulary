@@ -5,6 +5,7 @@ import string
 import matplotlib.pyplot as plt
 from math import pow
 from bisect import bisect_left
+import os.path
 
 #All hand-made modules
 """
@@ -37,6 +38,8 @@ from anagrams import *
 ###
 ###	NOTE : This file is essential for pip module.If you want to read the code , 
 ### wordabulary.py is the file for you
+### Also , since pip module didn't work well with data files,
+### fool it with naming data files as words_txt.py instead of words.txt
 ###
 
 #Option 1 - filter words above some length
@@ -312,7 +315,7 @@ def allstar_words():
 	to_sort = raw_input("See sorted version ? press y : ")
 	if to_sort == 'y':
 	
-		book = booker_most_frequent.read_file('reference/words.txt')
+		book = booker_most_frequent.read_file('words_txt.py')
 		result , tots = most_frequent(book)
 		
 		let = []
@@ -625,7 +628,7 @@ def print_pronounce(word):
     return nada
 
 #option 15 - rhyme for a dime
-def create_word_dict(filename='reference/c06d'):
+def create_word_dict(filename='c06d.py'):
     """
 
         Build a dictionary from file only for keys
@@ -769,6 +772,260 @@ def crossword(mystery_word):
 
 	print '\nTotal alternatives : ',matches
 
+
+#option 17 - books and stuff
+
+def total_freq(t):
+    """
+
+        Return total occurences of letters
+    """
+    count = 0
+    for freq,x in t:
+        count += freq
+    return count
+
+
+def read_file(filename):
+    return open(filename).read()
+
+
+def char_histogram(s):
+    """
+
+        Make a map from letters to number of times they appear in s.
+        Returns: map from letter to frequency
+    """
+    hist = {}
+    for x in s:
+        x = x.lower()
+        hist[x] = hist.get(x, 0) + 1
+    return hist
+
+
+#you might want to look at deprecated/ this file for naive implementation
+def word_histogram(doc):
+    hist = {}
+    fp = file(doc)
+
+    punctuation = string.punctuation
+    for line in fp:
+        # replace hyphens with spaces before splitting
+        line = line.replace('-', ' ')
+    
+        for word in line.split():
+            # remove punctuation and convert to lowercase
+            word = word.strip(string.punctuation + string.whitespace)
+            word = word.lower()
+
+            # update the histogram
+            hist[word] = hist.get(word, 0) + 1
+
+    return hist
+
+
+def most_frequent(doc,typef='char',to_limit=False):
+    """
+
+        Sorts the typef in doc in reverse order of frequency.
+        return reverse sorted version along with num_words in doc.
+    """
+    if typef =='char':
+        hist = char_histogram(doc)
+
+    elif typef =='word':
+        hist = word_histogram(doc)
+
+    t = []
+    for x, freq in hist.iteritems():
+        t.append((freq, x))
+
+    t.sort(reverse=True)
+    result = []
+    #list of tuples
+    limit = 0# to limit only 20 most frequent words
+    tots = total_freq(t)
+    for freq, x in t:
+        
+        percentage = get_percent_in2points(freq,tots)
+        result.append((x,freq,percentage))
+
+        if typef=='word'and to_limit==True:
+            limit += 1
+            if limit==20:
+                break
+
+    return result,tots
+
+
+def iterate_booker(filer,typef='char'):
+    """
+		main function module
+    """
+    if not os.path.isfile(filer):
+        print '\tNot a valid file !Returning now...'
+        return 
+
+    to_limit = False#Limit table display size for large docs
+
+    print '\tFile found!Working ...'
+    if typef=='char':
+        doc = read_file(filer)
+        out,tots = most_frequent(doc,'char')
+        table = PrettyTable(['Char','Freq','%'])
+    
+    elif typef=='word':   
+        print '\tNOTE : If your file is too big , the analysis may take a long time'
+        to_limit = raw_input("\tEnter y to limit display top 20 entities : ")
+        if to_limit=='y':
+            to_limit = True
+        
+        out,tots = most_frequent(filer,'word',to_limit)
+        table = PrettyTable(['Word','Freq','%'])
+
+    for x,freq,percent in out:
+        table.add_row([x,freq,percent])
+
+    print table
+    time.sleep(1)
+    print '\tTotal entities in document : ',tots
+    print '\tTotal unique entities : ',len(out)
+
+
+#you might want to look at deprecated/ this file for naive implementation
+def check_data(transcript,reference_dict):
+	"""
+
+		return a dictionary of words in transcript not in reference_dict
+		Effectively , these are percieved as misspelled words.
+	"""
+	incorrect_dict = dict()
+	count = 0
+	for key ,freq,percent in transcript:
+
+		if key not in reference_dict:
+			#print key,' not in dict'
+			incorrect_dict[key] = 'suggest_correction_here'
+			count += freq	# a word may be misspelled multiple times
+
+	return incorrect_dict,count
+
+
+def booker_correct(filer):
+	
+	if not os.path.isfile(filer):
+		print '\tNot a valid file !Returning now...'
+		return 
+
+	out,tot_words_doc = most_frequent(filer,'word')
+	reference_dict = create_dict()
+
+	incorrect_dict,count = check_data(out,reference_dict)
+	print '\n'	
+	for key in incorrect_dict:
+		print '\t',key
+
+	time.sleep(2)
+	print '\n\tTotal misspelled occurences : ',count
+
+
+#booker submenu
+def booker_initialise():
+	"""
+
+		submenu for dealing with books and docs
+	"""
+	print '\tLet\'s analyze some books and stuff'
+
+	while True :
+		print '\t#operations'
+		print '\t1 for finding most frequent chars in a book(txt file)'
+		print '\t2 for finding most frequent words in a book(txt file)'
+		print '\t3 for finding all typos in a book'
+		print '\n\t and 0 to exit this submenu'
+	
+		option = raw_input("\tYour choice :")
+		print '\tTIP : start with / '
+		if option=='0' or option=='clear':
+			break
+
+
+		elif option=='1':
+			filer=raw_input("\tEnter your file for frequency distribution:\n\t")
+			iterate_booker(filer,'char')	
+		
+		elif option=='2':
+			filer=raw_input("\tEnter your file for word distribution:\n\t")
+			iterate_booker(filer,'word')
+
+		elif option=='3':
+			filer = raw_input("\tEnter your file for typos:\n\t ")
+			booker_correct(filer)	
+
+
+		else :
+			print '\tIncorrect choice :(\n'
+
+		time.sleep(1)
+		print '\n'
+
+
+#option 18 - anagrams
+def contents_of(word):
+	"""
+
+		return a string containing all letters in order
+	"""
+	c = list(word)
+	c.sort()
+	c = ''.join(c)
+	return c
+
+
+def find_anagrams(word,filename='words_txt.py'):
+	"""
+
+		find all anagrams of word in file
+	"""
+	if not os.path.isfile(filename):
+		print 'Not a valid file! Returning now...'
+		return 
+
+	content = contents_of(word)
+	lister = []
+	count = 0
+	for line in open(filename):
+		word_iter = line.strip().lower()
+		sign = contents_of(word_iter)
+
+		if sign==content :
+			if word_iter!=word:
+				lister.append(word_iter)
+				count += 1
+
+	lister.sort()
+	return lister,count
+
+
+def print_anagrams(word,filename='words_txt.py'):
+	"""
+		Da MVP . Print all anagrams of given word found in file
+	"""
+	lister,count = find_anagrams(word)
+	if count==0:
+		print 'No anagram found'
+		return
+
+	for word in lister:
+		print word
+		time.sleep(0.1)
+	
+	print '\nTotal anagrams found : ',count
+
+
+
+
+
 if __name__=='__main__':
 	
 	print '\nWelcome to Wordabulary ! Choose your operation '
@@ -794,7 +1051,6 @@ if __name__=='__main__':
 		print '16 for crossword-aids/find out what this is'
 		print '17 for books/document analysis'
 		print '18 for anagram of given word'
-		print '19 for checking book'
 		print 'and 0 to exit\n'
 		
 		option = raw_input("Enter choice : ")
@@ -937,23 +1193,12 @@ if __name__=='__main__':
 
 
 		elif option=='17':
-			booker.initialise()
+			booker_initialise()
 
 
 		elif option=='18':
 			word = raw_input("Enter word to check all its anagrams : ")
-			anagrams.print_anagrams(word)
-
-		elif option=='19':
-			word = raw_input("Enter word to check all its anagrams : ")
-			fin = open('reference/words.txt')
-			for line in fin:
-				word = line.strip()#get rid of \r
-	
-			if 21 >=longword:
-				print word
-				time.sleep(1)
-				count = count + 1
+			print_anagrams(word)
 
 
 #Total number of words = 113809 - now updated ! - has some 380000+ords

@@ -2,7 +2,7 @@ from setuptools import setup
 setup(
   name = 'Wordabulary',
   packages = ['Wordabulary'], # this must be the same as the name above
-  version = '1.0.3',
+  version = '1.0.5',
   description = 'A console-based software which may be used as a library for analysing word patterns, various properties of words, analysing documents.',
   author = 'Kaustubh Hiware',
   author_email = 'hiwarekaustubh@gmail.com',
@@ -15,9 +15,9 @@ setup(
   #https://pypi.python.org/pypi?%3Aaction=list_classifiers
   #https://github.com/pypa/sampleproject/blob/master/setup.py
 
-  data_files=[('reference',['Wordabulary/reference/words.txt','Wordabulary/reference/c06d','Wordabulary/reference/c06d_guide'])],
-
-  include_data_files = True,
+  #data_files=[('reference',['Wordabulary/reference/words.txt','Wordabulary/reference/c06d','Wordabulary/reference/c06d_guide'])],
+  #Cheating !! replace .txt with _txt.py
+  #include_data_files = True,
 
   classifiers=[
         # How mature is this project? Common values are

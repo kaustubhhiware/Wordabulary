@@ -3,6 +3,9 @@ import time
 from prettytable import PrettyTable
 import string
 
+## further - remove stop_words from importer
+
+
 ####
 ####    NOTE : booker_most_frequent counts all occurences while
 ####            allstar_words checks for number of words , they are different !
@@ -92,7 +95,7 @@ def most_frequent(doc,typef='char',to_limit=False):
         percentage = get_percent_in2points(freq,tots)
         result.append((x,freq,percentage))
 
-        if typef=='word'and to_limit==False:
+        if typef=='word'and to_limit==True:
             limit += 1
             if limit==20:
                 break
@@ -148,11 +151,11 @@ if __name__ == '__main__':
 
     elif option=='1':
         filer=raw_input("\tEnter your file for frequency distribution:\n\t")
-        iterate(filer,'char')   
+        iterate_booker(filer,'char')   
         
     elif option=='2':
         filer=raw_input("\tEnter your file for word distribution:\n\t")
-        iterate(filer,'word')
+        iterate_booker(filer,'word')
 
     else :
         print '\tIncorrect choice :(\n'

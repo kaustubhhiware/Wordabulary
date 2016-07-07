@@ -4,7 +4,7 @@ import time
 def total_words(filename='reference/words.txt'):
 
 	tots = 0
-	fin = open('reference/words.txt')
+	fin = open(filename)
 	for line in fin:
 		word = line.strip()#get rid of \r
 		if True:
