@@ -27,6 +27,7 @@ Wordabulary/reverse_pairs.py
 Wordabulary/rhyming.py
 Wordabulary/rotate.py
 Wordabulary/rotate_pairs.py
+Wordabulary/wordabulary.py
 Wordabulary/words_with_e.py
 Wordabulary.egg-info/PKG-INFO
 Wordabulary.egg-info/SOURCES.txt

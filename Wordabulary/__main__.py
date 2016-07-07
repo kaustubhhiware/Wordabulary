@@ -64,7 +64,7 @@ if __name__=='__main__':
 		print '16 for crossword-aids/find out what this is'
 		print '17 for books/document analysis'
 		print '18 for anagram of given word'
-
+		print '19 for checking book'
 		print 'and 0 to exit\n'
 		
 		option = raw_input("Enter choice : ")
@@ -214,7 +214,16 @@ if __name__=='__main__':
 			word = raw_input("Enter word to check all its anagrams : ")
 			anagrams.print_anagrams(word)
 
-
+		elif option=='19':
+			word = raw_input("Enter word to check all its anagrams : ")
+			fin = open('reference/words.txt')
+			for line in fin:
+				word = line.strip()#get rid of \r
+	
+			if 21 >=longword:
+				print word
+				time.sleep(1)
+				count = count + 1
 #generate anagrams of word
 
 
