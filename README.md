@@ -57,6 +57,3 @@ The menu is quite naive , but easy to use . Each of the file can run individuall
 * Check rhymes based on stress points , not only pronunciation 
 
 * Extend finding typos to suggesting corrections
-
-* 
-
