@@ -1,19 +1,62 @@
 # Wordabulary
 Play with words , because why not ?
 
-This repository deals with letters , word , vocabulary , to rekindle the love for reading.
+This repository deals with letters, word, vocabulary, to rekindle the love for reading.There may be many alternatives for this .How is this any different ? I aim to create a module which works offline ,because it doesn't make sense to me to have an online module if I could just Google it.
 
-Features to be updated later
+## Usage
 
+The pip module is not fully developed yet ..till then we have this.
 
-pip module is ready ! Almost ...
-First run this =>
-`pip install Wordabulary`
+### Install this project
 
-Next , just copy this filecontents to your home directory 
-and save it as :(attempts have been made to have one step install and run , they will continue , but till then we have this)
-(words_txt.py)[https://raw.githubusercontent.com/kaustubhhiware/Wordabulary/master/Wordabulary/words_txt.py?token=AKy1F23CICk6LR-PPFNI83HVFYvB7gZoks5XiH_swA%3D%3D]
+  $ git clone https://github.com/kaustubhhiware/Wordabulary.git
+  
+### Plain download
+  $ wget ~/Downloads https://github.com/kaustubhhiware/Wordabulary/archive/master.zip
 
-,(c06d.py)[https://raw.githubusercontent.com/kaustubhhiware/Wordabulary/master/Wordabulary/c06d.py?token=AKy1Fy1Dv4kt56LO9G4ePsE37uNCQt4dks5XiH_vwA%3D%3D]
+### Run this program
+First change directory into the location of this project
 
-and (c06d_guide.py)[https://github.com/kaustubhhiware/Wordabulary/blob/master/Wordabulary/c06d_guide.py]
+  $ python Wordabulary/wordabulary.py
+  
+## Functions
+The menu is quite naive , but easy to use . Each of the file can run individually just as well.
+
+* Check words containing a given string
+
+* Check words  ending with a string
+
+* Distribution of letters in the word-pool
+
+* Check for words in dictionary 
+
+* Encode /Decode messages by rotation (Most recurrent example - ROT13)
+
+* Pronunciation of a word
+
+* Check rhyming words 
+
+* Words in a crossword
+[Add image here]
+
+* Anagrams with a meaning
+
+* Most frequent characters / words in a document
+
+* Find typographical errors in a document 
+
+## TODO : 
+
+* The plain words.txt file is pretty huge(~12mb) , so a workaround I am using right now is save it as words_txt.py for now.
+   (Current sie ~ 3mb).Need to sort this out.
+
+* Implement actual dictionary , thesaurus in a not so obvious way.
+
+* Add synonyms , antonyms. 
+
+* Check rhymes based on stress points , not only pronunciation 
+
+* Extend finding typos to suggesting corrections
+
+* 
+
