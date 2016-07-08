@@ -8,12 +8,13 @@ This repository deals with letters, word, vocabulary, to rekindle the love for r
 The pip module is not fully developed yet ..till then we have this.
 
 ### Install this project
-
+`
   $ git clone https://github.com/kaustubhhiware/Wordabulary.git
-  
+`  
 ### Plain download
+`
   $ wget ~/Downloads https://github.com/kaustubhhiware/Wordabulary/archive/master.zip
-
+`
 ### Run this program
 First change directory into the location of this project
 
@@ -37,7 +38,8 @@ The menu is quite naive , but easy to use . Each of the file can run individuall
 * Check rhyming words 
 
 * Words in a crossword
-[Add image here]
+
+![Crossword-aid]( https://github.com/kaustubhhiware/Wordabulary/blob/master/screenshots/crossword.png)
 
 * Anagrams with a meaning
 
