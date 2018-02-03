@@ -2,7 +2,7 @@ from setuptools import setup
 setup(
   name = 'Wordabulary',
   packages = ['Wordabulary'], # this must be the same as the name above
-  version = '1.0.5',
+  version = '1.1.0',
   description = 'A console-based software which may be used as a library for analysing word patterns, various properties of words, analysing documents.',
   author = 'Kaustubh Hiware',
   author_email = 'hiwarekaustubh@gmail.com',
@@ -38,5 +38,5 @@ setup(
         'Programming Language :: Python :: 2.7',
     ],
 
-    install_requires=['prettytable', 'matplotlib'],#graphs and tables
+    install_requires=['prettytable', 'matplotlib','requests'],#graphs and tables
 )

@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from math import pow
 from bisect import bisect_left
 import os.path
-
+import requests
 #All hand-made modules
 """
 from length_sorter import *
@@ -39,7 +39,7 @@ from anagrams import *
 ###	NOTE : This file is essential for pip module.If you want to read the code , 
 ### wordabulary.py is the file for you
 ### Also , since pip module didn't work well with data files,
-### fool it with naming data files as words_txt.py instead of words.txt
+### fool it with naming data files as words.txt instead of words.txt
 ###
 
 #Option 1 - filter words above some length
@@ -49,7 +49,7 @@ def length_sorter(longword):
 	"""
 	print ' '
 	count = 0
-	fin = open('words_txt.py')
+	fin = open('words.txt')
 	for line in fin:
 		word = line.strip()#get rid of \r
 	
@@ -165,7 +165,7 @@ def is_abecedarian(word):
 
 
 #option 6 - find words containing a substring
-def total_words(filename='words_txt.py'):
+def total_words(filename='words.txt'):
 
 	tots = 0
 	fin = open(filename)
@@ -186,7 +186,7 @@ def words_with_e(substring,is_print):
 	if is_print:
 		print 'Words with',substring
 	count = 0
-	fin = open('words_txt.py')
+	fin = open('words.txt')
 	substring = substring.lower()
 	for line in fin:
 		word = line.strip().lower()#get rid of \r
@@ -216,7 +216,7 @@ def ends_with(substring):
 	# 0.2417 and 0.24107 - approach 2 overall better
 	count = 0
 	start_time = time.time()
-	fin = open('words_txt.py')
+	fin = open('words.txt')
 	for line in fin:
 		##Approach 2:check only for words containing that substring
 		word = line.strip()#get rid of \r
@@ -315,7 +315,7 @@ def allstar_words():
 	to_sort = raw_input("See sorted version ? press y : ")
 	if to_sort == 'y':
 	
-		book = booker_most_frequent.read_file('words_txt.py')
+		book = booker_most_frequent.read_file('words.txt')
 		result , tots = most_frequent(book)
 		
 		let = []
@@ -332,7 +332,7 @@ def allstar_words():
 
 
 #option 9 - find word in dict
-def create_dict(filename='words_txt.py'):
+def create_dict(filename='words.txt'):
 	"""
 
 		Add each string as key in a dict
@@ -378,7 +378,7 @@ def word_list():
     	Prepare word list to search in
     """
     word_list = []
-    fin = open('words_txt.py')
+    fin = open('words.txt')
 
     for line in fin:
         word = line.strip()
@@ -982,7 +982,7 @@ def contents_of(word):
 	return c
 
 
-def find_anagrams(word,filename='words_txt.py'):
+def find_anagrams(word,filename='words.txt'):
 	"""
 
 		find all anagrams of word in file
@@ -1007,7 +1007,7 @@ def find_anagrams(word,filename='words_txt.py'):
 	return lister,count
 
 
-def print_anagrams(word,filename='words_txt.py'):
+def print_anagrams(word,filename='words.txt'):
 	"""
 		Da MVP . Print all anagrams of given word found in file
 	"""
@@ -1023,11 +1023,14 @@ def print_anagrams(word,filename='words_txt.py'):
 	print '\nTotal anagrams found : ',count
 
 
-
+def first_run():
+	print 'hi'
 
 
 if __name__=='__main__':
 	
+	first_run()
+
 	print '\nWelcome to Wordabulary ! Choose your operation '
 
 	while True:
